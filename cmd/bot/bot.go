@@ -192,6 +192,17 @@ var DOTA *SoundCollection = &SoundCollection{
 	},
 }
 
+var OVERWATCH *SoundCollection = &SoundCollection{
+	Prefix: "ow",
+	Commands: []string{
+		"!overwatch",
+        "!ow",
+	},
+	Sounds: []*Sound{
+		createSound("payload", 50, 250),
+	},
+}
+
 var COLLECTIONS []*SoundCollection = []*SoundCollection{
 	AIRHORN,
 	KHALED,
@@ -200,6 +211,7 @@ var COLLECTIONS []*SoundCollection = []*SoundCollection{
 	COW,
 	BIRTHDAY,
     DOTA,
+    OVERWATCH,
 }
 
 // Create a Sound struct
