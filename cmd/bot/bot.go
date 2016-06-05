@@ -203,6 +203,17 @@ var OVERWATCH *SoundCollection = &SoundCollection{
 	},
 }
 
+var UJ *SoundCollection = &SoundCollection{
+	Prefix: "uj",
+	Commands: []string{
+		"!uj",
+	},
+	Sounds: []*Sound{
+		createSound("god", 50, 250),
+		createSound("song", 50, 250),
+	},
+}
+
 var COLLECTIONS []*SoundCollection = []*SoundCollection{
 	AIRHORN,
 	KHALED,
@@ -212,6 +223,7 @@ var COLLECTIONS []*SoundCollection = []*SoundCollection{
 	BIRTHDAY,
     DOTA,
     OVERWATCH,
+    UJ,
 }
 
 // Create a Sound struct
