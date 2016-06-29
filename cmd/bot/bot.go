@@ -155,6 +155,7 @@ var ETHAN *SoundCollection = &SoundCollection{
 		createSound("cuts", 30, 250),
 		createSound("beat", 30, 250),
 		createSound("sodiepop", 1, 250),
+		createSound("vape", 1, 250),
 	},
 }
 
@@ -200,6 +201,8 @@ var DOTA *SoundCollection = &SoundCollection{
         createSound("liquid", 50, 0),
         createSound("history", 50, 0),
         createSound("smut", 50, 0),
+        createSound("team", 50, 0),
+        createSound("aegis", 50, 0),
 	},
 }
 
@@ -215,8 +218,24 @@ var OVERWATCH *SoundCollection = &SoundCollection{
         createSound("woah", 50, 0),
         createSound("winky", 50, 0),
         createSound("turd", 50, 0),
-        createSound("ryugawagatekiwokurau", 50, 0),
+        createSound("ryuugawagatekiwokurau", 50, 0),
         createSound("cyka", 50, 0),
+        createSound("noon", 50, 0),
+        createSound("somewhere", 50, 0),
+        createSound("lift", 50, 0),
+        createSound("russia", 50, 0),
+	},
+}
+
+var WARCRAFT *SoundCollection = &SoundCollection{
+	Prefix: "wc",
+	Commands: []string{
+		"!wc3",
+		"!warcraft",
+	},
+	Sounds: []*Sound{
+		createSound("work", 50, 0),
+		createSound("awake", 50, 0),
 	},
 }
 
@@ -245,6 +264,11 @@ var MEME *SoundCollection = &SoundCollection{
         createSound("donethis", 50, 0),
         createSound("leeroy", 50, 0),
         createSound("slam", 50, 0),
+        createSound("nerd", 50, 0),
+        createSound("kappa", 50, 0),
+        createSound("digitalsports", 50, 0),
+        createSound("csi", 50, 0),
+        createSound("nogod", 50, 0),
 	},
 }
 
@@ -254,8 +278,11 @@ var TRUMP *SoundCollection = &SoundCollection{
 		"!trump",
 	},
 	Sounds: []*Sound{
-		createSound("10ft", 50, 0),
-		createSound("motivation", 50, 0),
+		createSound("10ft", 50, 250),
+		createSound("motivation", 50, 250),
+		createSound("bing", 50, 250),
+		createSound("jeb", 50, 250),
+		createSound("wall", 50, 250),
 	},
 }
 
@@ -282,7 +309,6 @@ var CRY *SoundCollection = &SoundCollection{
 var IS *SoundCollection = &SoundCollection{
 	Prefix: "is",
 	Commands: []string{
-		"!ísland",
         "!is",
 	},
 	Sounds: []*Sound{
@@ -297,6 +323,10 @@ var IS *SoundCollection = &SoundCollection{
         createSound("mis", 50, 0),
         createSound("travis", 50, 0),
         createSound("indriði", 50, 0),
+        createSound("feitur", 50, 250),
+        createSound("þunnur", 50, 250),
+        createSound("hveiti", 50, 250),
+        createSound("flauta", 50, 250),
 	},
 }
 
@@ -308,6 +338,7 @@ var SOUTHPARK *SoundCollection = &SoundCollection{
 	},
 	Sounds: []*Sound{
 		createSound("screw", 50, 0),
+		createSound("authority", 50, 0),
 	},
 }
 
@@ -339,9 +370,22 @@ var ARCHER *SoundCollection = &SoundCollection{
 	},
 }
 
+var PRONOUNCE *SoundCollection = &SoundCollection{
+	Prefix: "pronounce",
+	Commands: []string{
+		"!pronounce",
+	},
+	Sounds: []*Sound{
+		createSound("ng", 10, 250),
+		createSound("almar", 10, 250),
+		createSound("meme", 10, 250),
+	},
+}
+
 var SOUNDCOMMANDS *TextCollection = &TextCollection{
     Commands: []string{
         "!imanoob",
+        "!l2p",
     },
     Text: getSoundCommands(),
 }
@@ -361,10 +405,19 @@ var HILLARY *TextCollection = &TextCollection{
     Text: "https://i.imgur.com/1PFAZsV.jpg",
 }
 
+var UNEMPLOYED *TextCollection = &TextCollection{
+    Commands: []string{
+        "!unemployedlist",
+        "!unemployed",
+    },
+    Text: "HEY ÍVAR ( ° ͜ʖ͡°)╭∩╮",
+}
+
 var TEXTCMDS []*TextCollection = []*TextCollection{
     SOUNDCOMMANDS, 
     GITHUB,
     HILLARY,
+    UNEMPLOYED,
 }
 
 
@@ -377,6 +430,7 @@ var COLLECTIONS []*SoundCollection = []*SoundCollection{
 	BIRTHDAY,
     DOTA,
     OVERWATCH,
+    WARCRAFT,
     UJ,
     MEME,
     TRUMP,
@@ -386,6 +440,7 @@ var COLLECTIONS []*SoundCollection = []*SoundCollection{
     SOUTHPARK,
     SILICONVALLEY,
     ARCHER,
+    PRONOUNCE,
 }
 
 func getSoundCommands() string {
