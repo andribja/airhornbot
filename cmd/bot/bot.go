@@ -413,14 +413,6 @@ var GITHUB *TextCollection = &TextCollection{
     Text: "https://github.com/andribja/airhornbot",
 }
 
-var REQUEST *TextCollection = &TextCollection{
-    Commands: []string{
-        "!request",
-        "!req",
-    },
-    Text: "",
-}
-
 var UNEMPLOYED *TextCollection = &TextCollection{
     Commands: []string{
         "!unemployedlist",
@@ -888,6 +880,9 @@ func onMessageCreate(s *discordgo.Session, m *discordgo.MessageCreate) {
 	}
 
 	msg := strings.Replace(m.ContentWithMentionsReplaced(), s.State.Ready.User.Username, "username", 1)
+    if len(msg) > 400 {
+        return
+    }
 	parts := strings.Split(strings.ToLower(msg), " ")
 
 	channel, _ := discord.State.Channel(m.ChannelID)
@@ -925,21 +920,34 @@ func onMessageCreate(s *discordgo.Session, m *discordgo.MessageCreate) {
 		return
 	}
 
+    // for requests, kept in soundrequests.txt which needs to be present beforehand
     if scontains(parts[0], "!request") {
-        f, err := os.OpenFile("requests.txt", os.O_APPEND, 0666);
-        if(err != nil) { 
+        f, err := os.OpenFile("soundrequests.txt", os.O_APPEND|os.O_WRONLY, os.ModeAppend);
+        if(err != nil) {
 			log.WithFields(log.Fields{
 				"error": err,
 			}).Warning("Invalid Sound Request")
             return
         }
         buffer := bytes.NewBufferString("")
+        buffer.WriteString(m.Author.Username)
+        buffer.WriteString(": ")
         for _, str := range parts[1:] {
              buffer.WriteString(str)
              buffer.WriteString(" ")
         }
-        f.WriteString(buffer.String());
+        log.Info("Writing Request to file")
+        buffer.WriteString("\n\n")
+        code, err := f.WriteString(buffer.String())
         f.Close()
+        if err != nil {
+            log.WithFields(log.Fields{
+                "error": err,
+                "code": code,
+            }).Warning("Failed to write string to file")
+            return
+        }
+        s.ChannelMessageSend(m.ChannelID, "good sHit :ok_hand: :heavy_check_mark: :100: :100:")
         return
     }
 
