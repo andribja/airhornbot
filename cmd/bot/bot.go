@@ -258,18 +258,32 @@ var MEME *SoundCollection = &SoundCollection{
 	},
 	Sounds: []*Sound{
 		createSound("mad", 50, 0),
-		createSound("ateam", 50, 0),
-        createSound("bennyhill", 50, 0),
         createSound("tuba", 50, 0),
         createSound("donethis", 50, 0),
         createSound("leeroy", 50, 0),
-        createSound("slam", 50, 0),
         createSound("nerd", 50, 0),
         createSound("kappa", 50, 0),
         createSound("digitalsports", 50, 0),
         createSound("csi", 50, 0),
         createSound("nogod", 50, 0),
 	},
+}
+
+var PLAY *SoundCollection = &SoundCollection{
+	Prefix: "play",
+	Commands: []string{
+		"!play",
+        "!song",
+	},
+	Sounds: []*Sound{
+        createSound("datboi", 50, 250),
+        createSound("slam", 50, 250),
+        createSound("xfiles", 50, 250),
+        createSound("dmx", 50, 250),
+        createSound("titan", 50, 250),
+		createSound("ateam", 50, 250),
+        createSound("bennyhill", 50, 250),
+    },
 }
 
 var TRUMP *SoundCollection = &SoundCollection{
@@ -327,6 +341,7 @@ var IS *SoundCollection = &SoundCollection{
         createSound("þunnur", 50, 250),
         createSound("hveiti", 50, 250),
         createSound("flauta", 50, 250),
+        createSound("andsk", 50, 250),
 	},
 }
 
@@ -398,11 +413,12 @@ var GITHUB *TextCollection = &TextCollection{
     Text: "https://github.com/andribja/airhornbot",
 }
 
-var HILLARY *TextCollection = &TextCollection{
+var REQUEST *TextCollection = &TextCollection{
     Commands: []string{
-        "!hillary",
+        "!request",
+        "!req",
     },
-    Text: "https://i.imgur.com/1PFAZsV.jpg",
+    Text: "",
 }
 
 var UNEMPLOYED *TextCollection = &TextCollection{
@@ -416,7 +432,6 @@ var UNEMPLOYED *TextCollection = &TextCollection{
 var TEXTCMDS []*TextCollection = []*TextCollection{
     SOUNDCOMMANDS, 
     GITHUB,
-    HILLARY,
     UNEMPLOYED,
 }
 
@@ -433,6 +448,7 @@ var COLLECTIONS []*SoundCollection = []*SoundCollection{
     WARCRAFT,
     UJ,
     MEME,
+    PLAY, //songs
     TRUMP,
     STRAKARNIR,
     CRY,
@@ -459,6 +475,7 @@ func getSoundCommands() string {
     }
     return buffer.String();
 }
+
 
 
 // Create a Sound struct
@@ -908,10 +925,29 @@ func onMessageCreate(s *discordgo.Session, m *discordgo.MessageCreate) {
 		return
 	}
 
+    if scontains(parts[0], "!request") {
+        f, err := os.OpenFile("requests.txt", os.O_APPEND, 0666);
+        if(err != nil) { 
+			log.WithFields(log.Fields{
+				"error": err,
+			}).Warning("Invalid Sound Request")
+            return
+        }
+        buffer := bytes.NewBufferString("")
+        for _, str := range parts[1:] {
+             buffer.WriteString(str)
+             buffer.WriteString(" ")
+        }
+        f.WriteString(buffer.String());
+        f.Close()
+        return
+    }
+
     for _, tcoll := range TEXTCMDS {
         for _, cmd := range tcoll.Commands {
             if scontains(parts[0], cmd) {
                 s.ChannelMessageSend(m.ChannelID, tcoll.Text) 
+                return;
             }
         }
     }
