@@ -203,6 +203,7 @@ var DOTA *SoundCollection = &SoundCollection{
         createSound("smut", 50, 0),
         createSound("team", 50, 0),
         createSound("aegis", 50, 0),
+        createSound("ding", 50, 0),
 	},
 }
 
@@ -239,17 +240,6 @@ var WARCRAFT *SoundCollection = &SoundCollection{
 	},
 }
 
-var UJ *SoundCollection = &SoundCollection{
-	Prefix: "uj",
-	Commands: []string{
-		"!uj",
-	},
-	Sounds: []*Sound{
-		createSound("god", 50, 0),
-		createSound("song", 50, 0),
-	},
-}
-
 var MEME *SoundCollection = &SoundCollection{
 	Prefix: "meme",
 	Commands: []string{
@@ -266,6 +256,9 @@ var MEME *SoundCollection = &SoundCollection{
         createSound("digitalsports", 50, 0),
         createSound("csi", 50, 0),
         createSound("nogod", 50, 0),
+        createSound("fuckedup", 50, 0),
+        createSound("nevergiveup", 50, 0),
+        createSound("jesus", 50, 0),
 	},
 }
 
@@ -283,6 +276,7 @@ var PLAY *SoundCollection = &SoundCollection{
         createSound("titan", 50, 250),
 		createSound("ateam", 50, 250),
         createSound("bennyhill", 50, 250),
+        createSound("sax", 50, 250),
     },
 }
 
@@ -342,6 +336,7 @@ var IS *SoundCollection = &SoundCollection{
         createSound("hveiti", 50, 250),
         createSound("flauta", 50, 250),
         createSound("andsk", 50, 250),
+        createSound("duft", 50, 250),
 	},
 }
 
@@ -382,6 +377,7 @@ var ARCHER *SoundCollection = &SoundCollection{
 		createSound("dangerzone", 50, 0),
 		createSound("DANGERZONE", 50, 0),
 		createSound("klog", 50, 0),
+		createSound("duh", 50, 0),
 	},
 }
 
@@ -438,7 +434,6 @@ var COLLECTIONS []*SoundCollection = []*SoundCollection{
     DOTA,
     OVERWATCH,
     WARCRAFT,
-    UJ,
     MEME,
     PLAY, //songs
     TRUMP,
