@@ -916,6 +916,8 @@ func onMessageCreate(s *discordgo.Session, m *discordgo.MessageCreate) {
 		return
 	}
 
+	// If it's not relevant to our shard, just exit
+    //removed
     // for requests, kept in soundrequests.txt which needs to be present beforehand
     if scontains(parts[0], "!request") {
         f, err := os.OpenFile("soundrequests.txt", os.O_APPEND|os.O_WRONLY, os.ModeAppend);
