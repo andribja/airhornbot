@@ -273,6 +273,7 @@ var PLAY *SoundCollection = &SoundCollection{
         createSound("slam", 50, 250),
         createSound("xfiles", 50, 250),
         createSound("dmx", 50, 250),
+        createSound("america", 50, 250),
         createSound("titan", 50, 250),
 		createSound("ateam", 50, 250),
         createSound("bennyhill", 50, 250),
