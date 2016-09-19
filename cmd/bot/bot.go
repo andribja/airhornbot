@@ -376,7 +376,6 @@ var ARCHER *SoundCollection = &SoundCollection{
 	},
 	Sounds: []*Sound{
 		createSound("dangerzone", 50, 0),
-		createSound("DANGERZONE", 50, 0),
 		createSound("klog", 50, 0),
 		createSound("duh", 50, 0),
 	},
