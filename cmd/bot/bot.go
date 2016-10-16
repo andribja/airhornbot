@@ -292,6 +292,7 @@ var TRUMP *SoundCollection = &SoundCollection{
 		createSound("bing", 50, 250),
 		createSound("jeb", 50, 250),
 		createSound("wall", 50, 250),
+		createSound("pussy", 50, 250),
 	},
 }
 
