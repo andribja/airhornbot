@@ -204,6 +204,8 @@ var DOTA *SoundCollection = &SoundCollection{
         createSound("team", 50, 0),
         createSound("aegis", 50, 0),
         createSound("ding", 50, 0),
+        createSound("lakad", 50, 0),
+        createSound("nextlvl", 50, 0),
 	},
 }
 
